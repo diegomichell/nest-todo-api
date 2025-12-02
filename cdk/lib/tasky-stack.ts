@@ -73,7 +73,7 @@ export class TaskyStack extends cdk.Stack {
 
     const database = new rds.DatabaseInstance(this, 'TaskyDatabase', {
       engine: rds.DatabaseInstanceEngine.postgres({
-        version: rds.PostgresEngineVersion.VER_16_1,
+        version: rds.PostgresEngineVersion.VER_16_8,
       }),
       instanceType: ec2.InstanceType.of(
         ec2.InstanceClass.T3,
