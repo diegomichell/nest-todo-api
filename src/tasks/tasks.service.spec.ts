@@ -1,7 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { NotFoundException, ForbiddenException } from '@nestjs/common';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
 import { TasksService } from './tasks.service';
 import { Task, TaskStatus } from '../entities/task.entity';
 import { CreateTaskDto } from './dto/create-task.dto';
@@ -9,7 +8,6 @@ import { UpdateTaskDto } from './dto/update-task.dto';
 
 describe('TasksService', () => {
   let service: TasksService;
-  let taskRepository: Repository<Task>;
 
   const mockTaskRepository = {
     create: jest.fn(),
@@ -31,7 +29,6 @@ describe('TasksService', () => {
     }).compile();
 
     service = module.get<TasksService>(TasksService);
-    taskRepository = module.get<Repository<Task>>(getRepositoryToken(Task));
   });
 
   afterEach(() => {
